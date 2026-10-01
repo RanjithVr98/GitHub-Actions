@@ -25,6 +25,6 @@ jobs:
               with:
                 username: ${{ vars.DOCKERHUB_USERNAME }}
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
-            - name: pushing the code
-                run: docker push ranjithjrdocker/github-actions:gta
+            - name: docker image push
+              run: docker push ranjithjrdocker/github-actions:gta
                   
