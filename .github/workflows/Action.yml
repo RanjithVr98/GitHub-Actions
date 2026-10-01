@@ -41,8 +41,8 @@ jobs:
                 key: ${{ secrets.SERVER_SSH_KEY }}
                 port: ${{ vars.SERVER_PORT }}
                 script: |
-                    docker pull ${{ env.DOCKER_IMAGE_NAME }}
-                    
-
-                     
+                  docker pull ${{ env.DOCKER_IMAGE_NAME }}
+                  
+                  
+                  
                   
