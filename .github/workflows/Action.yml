@@ -1,15 +1,17 @@
 name: Github Actions
 on: 
-    workflow_dispatch:
+    push:
+        branches: main
 jobs:
     build-test-job:
         runs-on: ubuntu-latest
         steps:
             - name: checkout
               uses: actions/checkout@v7
-            - name: code available?
-              run: ls
-              
+            - name: build stage
+              run: mvn clean install -DskipTests=true
+            - name: test stage
+              run: mvn test  
 
               
 
