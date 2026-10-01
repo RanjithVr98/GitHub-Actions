@@ -30,6 +30,8 @@ jobs:
             - name: docker image push
               run: docker push ${{ env.DOCKER_IMAGE_NAME }}
     Deploy-job:
+        env:
+            DOCKER_CONTAINER_NAME: github-actions-container
         runs-on: ubuntu-latest
         needs: build-test-job
         steps:
@@ -42,7 +44,10 @@ jobs:
                 port: ${{ vars.SERVER_PORT }}
                 script: |
                   docker pull ${{ env.DOCKER_IMAGE_NAME }}
-                  
+                  docker rmi ${{ env.DOCKER_IMAGE_NAME}}
+                  docker stop ${{ env.DOCKER_CONTAINER_NAME }}
+                  docker rm ${{ env.DOCKER_CONTAINER_NAME }}
+                  docker run -d -p 80:8090 --name ${{ env.DOCKER_CONTAINER_NAME }} ${{ env.DOCKER_IMAGE_NAME }}
                   
                   
                   
