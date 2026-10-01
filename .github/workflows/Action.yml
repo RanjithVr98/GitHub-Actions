@@ -1,0 +1,11 @@
+name: Github Actions
+on:
+jobs:
+    build-test-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: build stage
+              run: mvn clean install -DskipTests=true
+              
+
+
